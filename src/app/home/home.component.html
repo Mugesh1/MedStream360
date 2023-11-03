@@ -1,0 +1,36 @@
+<div *ngIf="!selectedBut" class="main-container">
+    <span>
+        <span *ngFor="let i of shootCount" class="shoot"></span>
+    </span>
+    <div *ngFor="let i of starCount" class="star"></div>
+
+    <div class="background-image"></div>
+    <div class="header"><img width="250" height="100" src="assets\1.png"></div>
+    <div class="content">
+        <h1 class="text-animation">
+            <span class="animated-word">
+                <p class="pMar">Transforming Interventional</p>
+            </span>
+            <span class="animated-word">
+                <p class="pMar">Cardiology</p>
+            </span>
+        </h1>
+        <h3 class="text-animation">
+            <span class="animated-word">
+                <p class="pMar">with 24/7/365 live procedures from top global sites and experts </p>
+            </span>
+        </h3>
+        <button class="get-started-button" [ngClass]="{ 'loaded': contentLoaded }" (mouseover)="hoverButton = true"
+            (mouseout)="hoverButton = false" (click)="getStarted()">
+            <span [ngStyle]="{ 'margin-left.px': buttonMove }" class="button-text">Get Started</span>
+        </button>
+        <!-- <div class="button-effect"></div> -->
+
+    </div>
+    <div class="footer">
+        <!-- <img style="position: relative;top:40px;width: 80rem;height:35vh;" src="assets\3.png"> -->
+    </div>
+</div>
+<div *ngIf="selectedBut">
+    <app-login></app-login>
+</div>

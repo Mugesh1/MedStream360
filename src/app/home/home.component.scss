@@ -1,0 +1,318 @@
+/* styles.scss */
+.main-container {
+    position: relative;
+    background-color: black;
+    background: linear-gradient(to top, #392403, black);
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    overflow: hidden;
+  
+    .background-image {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50vh;
+      // background-image: url('/assets/3.png');
+      background-size: cover;
+      background-position: center bottom;
+      animation: backgroundMove 2s ease-in-out forwards;
+    }
+  
+    .pMar {
+      margin: 0px;
+      text-transform: uppercase;
+    }
+  
+    .header {
+      position: absolute;
+      top: -100px;
+      font-size: 24px;
+      animation: headerMove 1s ease-in-out 0.5s forwards;
+    }
+  
+    .footer {
+      position: absolute;
+      bottom: -100px;
+      font-size: 18px;
+      animation: footerMove 1s ease-in-out 0.5s forwards;
+    }
+  
+    .content {
+      text-align: center;
+  
+      .text-animation {
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        animation: textAppear 0.5s ease-in-out 2s forwards;
+      }
+  
+      .animated-text {
+        margin: 10px;
+        font-size: 18px;
+        opacity: 0;
+        animation: wordAppear 0.5s ease-in-out alternate 0.5s infinite;
+      }
+  
+      /* styles.scss */
+      // ... Existing styles
+  
+      .get-started-button {
+        color: red;
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        font-weight: 600;
+        opacity: 0;
+        animation: buttonAppear 0.5s ease-in-out 3s forwards;
+  
+        &:hover {
+          cursor: pointer;
+          background: linear-gradient(to top, red, black);
+          color: black;
+          font-weight: 600;
+          border-radius: 15px;
+          margin: 0 10px 0px 10px;
+          border: linear-gradient(to top, red, black);
+          ;
+        }
+  
+        .button-text {
+          transition: margin-left 0.3s;
+        }
+      }
+  
+  
+      .button-effect {
+        width: 0;
+        transition: width 0.2s ease-in-out;
+        /* Transition for the effect */
+      }
+  
+      .get-started-button:hover+.button-effect {
+        width: 13%;
+        top: 10px;
+        height: 5px;
+        border-radius: 10px;
+        position: relative;
+        left: 18.7rem;
+        background: linear-gradient(to top, red, black);
+  
+        /* Expand the effect element on hover */
+      }
+  
+    }
+  
+    @keyframes buttonAppear {
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes backgroundMove {
+      to {
+        transform: translateY(-50%);
+      }
+    }
+  
+    @keyframes headerMove {
+      to {
+        top: 20px;
+      }
+    }
+  
+    @keyframes footerMove {
+      to {
+        bottom: 20px;
+      }
+    }
+  
+    @keyframes textAppear {
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @keyframes wordAppear {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .star {
+    position: absolute;
+    background-color: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkling 3s infinite, animateBg 50s linear infinite;
+  
+  }
+  
+  @for $i from 1 through 80 {
+    .star:nth-child(#{$i}) {
+      left: random(100) + vw;
+      top: random(100) + vh;
+    }
+  }
+  
+  
+  @keyframes twinkling {
+    0% {
+      opacity: 0;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  // section{
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100vh;
+  //   /* https://lh3.googleusercontent.com/ka_5IYJDRkXZnbptxq64LPuggGL5FM8gnpJlsuSiOQh4b39kMkiRbVfX8iK8bjMg5SLkdfoix09P60wyFjN2=w681-h614 */
+  //   background: url("https://i.postimg.cc/c1Q3njM0/bg2.jpg");
+  // /*   background-color:black; */
+  //   background-size: cover;
+  //   animation: animateBg 50s linear infinite;
+  // }
+  
+  @keyframes animateBg{
+    0%,100%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+  }
+  
+  .shoot{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1);
+    animation: animate 3s linear infinite;
+  }
+  .shoot::before{
+    content:'';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg,#fff,transparent);
+  }
+  @keyframes animate
+  {
+    0%
+    {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+    70%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        transform: rotate(315deg) translateX(-1000px);
+        opacity: 0;
+    }
+  }
+  .shoot:nth-child(1){
+    top: 0;
+    right: 0;
+    left: initial;
+    animation-delay: 0s;
+    animation-duration: 1s;
+  }
+  .shoot:nth-child(2){
+    top: 0;
+    right: 80px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 3s;
+  }
+  .shoot:nth-child(3){
+    top: 80;
+    right: 0px;
+    left: initial;
+    animation-delay: 0.4s;
+    animation-duration: 2s;
+  }
+  .shoot:nth-child(4){
+    top: 0;
+    right: 180px;
+    left: initial;
+    animation-delay: 0.6s;
+    animation-duration: 1.5s;
+  }
+  .shoot:nth-child(5){
+    top: 0;
+    right: 400px;
+    left: initial;
+    animation-delay: 0.8s;
+    animation-duration: 2.5s;
+  }
+  .shoot:nth-child(6){
+    top: 0;
+    right: 600px;
+    left: initial;
+    animation-delay: 1s;
+    animation-duration: 3s;
+  }
+  .shoot:nth-child(7){
+    top: 300px;
+    right: 0px;
+    left: initial;
+    animation-delay: 1.2s;
+    animation-duration: 1.75s;
+  }
+  .shoot:nth-child(8){
+    top: 0px;
+    right: 700px;
+    left: initial;
+    animation-delay: 1.4s;
+    animation-duration: 1.25s;
+  }
+  .shoot:nth-child(9){
+    top: 0px;
+    right: 1000px;
+    left: initial;
+    animation-delay: 0.75s;
+    animation-duration: 2.25s;
+  }
+  .shoot:nth-child(9){
+    top: 0px;
+    right: 450px;
+    left: initial;
+    animation-delay: 2.75s;
+    animation-duration: 2.75s;
+  }
+  
+  
+  
+  
